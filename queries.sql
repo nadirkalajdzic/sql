@@ -42,3 +42,50 @@ from payment
 group by customer_id
 order by sum(amount) desc
 limit 5
+
+select customer_id, count(amount)
+from payment
+group by customer_id
+having count(amount) >= 40;
+
+select customer_id, sum(amount) 
+from payment
+where staff_id = 2
+group by customer_id
+having sum(amount) > 100;
+
+
+-------- assessment 1 --------
+
+-- 1
+select customer_id, sum(amount) 
+from payment
+where staff_id = 2
+group by customer_id
+having sum(amount) > 110;
+
+--2
+select count(*)
+from film
+where title like 'J%';
+
+--3
+select first_name || ' ' || last_name as full_name
+from customer
+where first_name like 'E%' and address_id < 500
+order by customer_id desc
+limit 1;
+
+-------- end of ass 1 --------
+
+
+select c.email
+from address a, customer c
+where a.address_id = c.address_id and a.district ilike 'california';
+
+select count(*)
+from payment
+where to_char(payment_date, 'FMDay') ilike 'monday%';
+
+
+
